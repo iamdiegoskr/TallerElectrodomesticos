@@ -1,13 +1,14 @@
 package com.sofka.skr.models;
 
 import com.sofka.skr.enums.Consumption;
+import com.sofka.skr.enums.Origin;
 
 public class Tv extends HomeAppliances{
 
     private int inches;
     private int haveTdt;
 
-    public Tv(Consumption consumption, int origin, int inches, int haveTdt) {
+    public Tv(Consumption consumption, Origin origin, int inches, int haveTdt) {
         super(consumption, origin);
         this.inches = inches;
         this.haveTdt = haveTdt;

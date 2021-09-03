@@ -1,13 +1,14 @@
 package com.sofka.skr.models;
 
 import com.sofka.skr.enums.Consumption;
+import com.sofka.skr.enums.Origin;
 
 public class Fridge extends HomeAppliances {
 
     private int capacity;
     private final int ADDICTION_CAPACITY = 10;
 
-    public Fridge(Consumption consumption, int origin, int capacity) {
+    public Fridge(Consumption consumption, Origin origin, int capacity) {
         super(consumption, origin);
         this.capacity = capacity;
     }

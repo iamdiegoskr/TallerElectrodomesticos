@@ -1,11 +1,12 @@
 package com.sofka.skr.models;
 
 import com.sofka.skr.enums.Consumption;
+import com.sofka.skr.enums.Origin;
 
 public class HomeAppliances {
 
     private Consumption consumption;
-    private int origin;
+    private Origin origin;
     private double priceTotal;
 
     private double priceA = 450000;
@@ -15,7 +16,7 @@ public class HomeAppliances {
     private double priceNational = 250000;
     private double priceImport = 350000;
 
-    public HomeAppliances(Consumption consumption, int origin) {
+    public HomeAppliances(Consumption consumption, Origin origin) {
         this.consumption = consumption;
         this.origin = origin;
     }
@@ -28,11 +29,11 @@ public class HomeAppliances {
         this.consumption = consumption;
     }
 
-    public int getOrigin() {
+    public Origin getOrigin() {
         return origin;
     }
 
-    public void setOrigin(int origin) {
+    public void setOrigin(Origin origin) {
         this.origin = origin;
     }
 
@@ -58,12 +59,12 @@ public class HomeAppliances {
         }
     }
 
-    public double getPriceOrigin(int origin){
+    public double getPriceOrigin(Origin origin){
 
         switch (origin){
-            case 1:
+            case NACIONAL:
                 return priceNational;
-            case 2:
+            case IMPORTADO:
                 return priceImport;
             default:
                 return 0;

@@ -1,6 +1,7 @@
 package com.sofka.skr;
 
 import com.sofka.skr.enums.Consumption;
+import com.sofka.skr.enums.Origin;
 import com.sofka.skr.models.Fridge;
 import com.sofka.skr.models.HomeAppliances;
 import com.sofka.skr.models.Tv;
@@ -13,6 +14,7 @@ public class Main {
     static ArrayList<HomeAppliances> listProducts = new ArrayList<>();
 
     static Consumption[] listTypeConsumption = {Consumption.A,Consumption.B,Consumption.C};
+    static Origin[] listOrigin = {Origin.NACIONAL,Origin.IMPORTADO};
 
     static Scanner lea = new Scanner(System.in);
 
@@ -50,60 +52,46 @@ public class Main {
 
     public static void registerTv(){
 
-        //System.out.println("Tipo de consumo del televisor? A,B,C" );
-        //String consumption = lea.next().toLowerCase();
-
-        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
-                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
-                listTypeConsumption,
-                listTypeConsumption[0]);
-
-        System.out.println("Ingrese el tipo de procedencia del tv? 1.Nacional 2.Importado");
-        int origin = lea.nextInt();
-
-        System.out.println("Ingrese el numero de pulgadas");
-        int inches = lea.nextInt();
-
-        System.out.println("El televisor tiene tdt ? 1.SI 2.NO");
-        int haveTdt = lea.nextInt();
+        Consumption typeConsumption = getConsumption("Televisor");
+        Origin origin = getOrigin("Televisor");
+        int inches = Integer.parseInt(JOptionPane.showInputDialog("Ingrese el numero de pulgadas"));
+        int haveTdt = Integer.parseInt(JOptionPane.showInputDialog("El televisor tiene tdt ? 1.SI 2.NO"));
 
         Tv tv = new Tv(typeConsumption, origin, inches, haveTdt);
         addProduct(tv);
-
-        System.out.println(tv.getPriceTotal());
     }
 
     public static void registerFridge(){
-        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
-                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
-                listTypeConsumption,
-                listTypeConsumption[0]);
-
-        System.out.println("Ingrese el tipo de procedencia de la nevera? 1.Nacional 2.Importado");
-        int origin = lea.nextInt();
-
-        System.out.println("Ingrese la capacidad de la nevera en litros : ");
-        int capacity = lea.nextInt();
+        Consumption typeConsumption = getConsumption("Nevera");
+        Origin origin = getOrigin("Nevera");
+        int capacity = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la capacidad de la nevera en litros : "));
 
         Fridge fridge = new Fridge(typeConsumption, origin, capacity);
         addProduct(fridge);
-
-        System.out.println(fridge.getPriceTotal());
     }
 
     public static void registerHomeAppliance(){
-        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
-                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
-                listTypeConsumption,
-                listTypeConsumption[0]);
+        Consumption typeConsumption = getConsumption("Electromestico");
 
-        System.out.println("Ingrese el tipo de procedencia del electrodomestico? 1.Nacional 2.Importado");
-        int origin = lea.nextInt();
+        Origin origin = getOrigin("Electrodomestico");
 
         HomeAppliances homeAppliances = new HomeAppliances(typeConsumption,origin);
         addProduct(homeAppliances);
+    }
 
-        System.out.println(homeAppliances.getPriceTotal());
+
+    public static Consumption getConsumption(String type){
+        return (Consumption)JOptionPane.showInputDialog(null, "Tipo de consumo ?",
+                type, JOptionPane.QUESTION_MESSAGE, null,
+                listTypeConsumption,
+                listTypeConsumption[0]);
+    }
+    
+    public static Origin getOrigin(String type){
+        return (Origin) JOptionPane.showInputDialog(null, "Tipo de consumo ?",
+                type, JOptionPane.QUESTION_MESSAGE, null,
+                listOrigin,
+                listOrigin[0]);
     }
 
     public static void addProduct(HomeAppliances product ){
@@ -125,7 +113,7 @@ public class Main {
         for (HomeAppliances product : listProducts){
             priceAllProducts += product.getPriceTotal();
         }
-
+        System.out.println("------------------------");
         System.out.println("VALOR TOTAL A PAGAR = " + priceAllProducts);
 
     }
