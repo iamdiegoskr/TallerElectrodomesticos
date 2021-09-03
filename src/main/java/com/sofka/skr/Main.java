@@ -4,6 +4,7 @@ import com.sofka.skr.models.Fridge;
 import com.sofka.skr.models.HomeAppliances;
 import com.sofka.skr.models.Tv;
 
+import javax.swing.*;
 import java.util.*;
 
 public class Main {
@@ -17,14 +18,13 @@ public class Main {
         int option = 0;
 
         do{
-
-            System.out.println("Deseas ingresar un electrodomestico ? 1.SI 0.SALIR");
-            option = lea.nextInt();
+            option = Integer.parseInt
+                    (JOptionPane.showInputDialog("Desea ingresar un electrodomestico ? 1.SI 0.SALIR"));
 
             if(option==1){
 
-                System.out.println("Que tipo de electrodomestico ?  1.Televisor 2.Nevera 3.General");
-                int type = lea.nextInt();
+                int type = Integer.parseInt(JOptionPane.
+                        showInputDialog("Que tipo de electrodomestico ?  1.Televisor 2.Nevera 3.General"));
 
                 switch (type){
                     case 1 :
@@ -37,7 +37,8 @@ public class Main {
                         registerHomeAppliance();
                         break;
                     default:
-                        System.out.println("Opcion invalida");
+                        JOptionPane.showMessageDialog(null, "Ingresaste una opcion invalida",
+                                "Hey!", JOptionPane.ERROR_MESSAGE);
                 }
             }
         }while(option!=0);
