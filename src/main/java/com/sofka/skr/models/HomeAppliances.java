@@ -1,8 +1,10 @@
 package com.sofka.skr.models;
 
+import com.sofka.skr.enums.Consumption;
+
 public class HomeAppliances {
 
-    private char consumption;
+    private Consumption consumption;
     private int origin;
     private double priceTotal;
 
@@ -13,16 +15,16 @@ public class HomeAppliances {
     private double priceNational = 250000;
     private double priceImport = 350000;
 
-    public HomeAppliances(char consumption, int origin) {
+    public HomeAppliances(Consumption consumption, int origin) {
         this.consumption = consumption;
         this.origin = origin;
     }
 
-    public char getConsumption() {
+    public Consumption getConsumption() {
         return consumption;
     }
 
-    public void setConsumption(char consumption) {
+    public void setConsumption(Consumption consumption) {
         this.consumption = consumption;
     }
 
@@ -43,13 +45,13 @@ public class HomeAppliances {
         this.priceTotal = priceTotal;
     }
 
-    public double getPriceConsumption(char type){
+    public double getPriceConsumption(Consumption type){
         switch (type){
-            case 'a':
+            case A:
                 return priceA;
-            case  'b':
+            case  B:
                 return priceB;
-            case 'c':
+            case C:
                 return priceC;
             default:
                 return 0;

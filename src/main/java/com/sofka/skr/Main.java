@@ -1,5 +1,6 @@
 package com.sofka.skr;
 
+import com.sofka.skr.enums.Consumption;
 import com.sofka.skr.models.Fridge;
 import com.sofka.skr.models.HomeAppliances;
 import com.sofka.skr.models.Tv;
@@ -10,6 +11,8 @@ import java.util.*;
 public class Main {
 
     static ArrayList<HomeAppliances> listProducts = new ArrayList<>();
+
+    static Consumption[] listTypeConsumption = {Consumption.A,Consumption.B,Consumption.C};
 
     static Scanner lea = new Scanner(System.in);
 
@@ -47,8 +50,13 @@ public class Main {
 
     public static void registerTv(){
 
-        System.out.println("Tipo de consumo del televisor? A,B,C" );
-        String consumption = lea.next().toLowerCase();
+        //System.out.println("Tipo de consumo del televisor? A,B,C" );
+        //String consumption = lea.next().toLowerCase();
+
+        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
+                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
+                listTypeConsumption,
+                listTypeConsumption[0]);
 
         System.out.println("Ingrese el tipo de procedencia del tv? 1.Nacional 2.Importado");
         int origin = lea.nextInt();
@@ -59,15 +67,17 @@ public class Main {
         System.out.println("El televisor tiene tdt ? 1.SI 2.NO");
         int haveTdt = lea.nextInt();
 
-        Tv tv = new Tv(consumption.charAt(0), origin, inches, haveTdt);
+        Tv tv = new Tv(typeConsumption, origin, inches, haveTdt);
         addProduct(tv);
 
         System.out.println(tv.getPriceTotal());
     }
 
     public static void registerFridge(){
-        System.out.println("Tipo de consumo de la nevera ? A,B,C" );
-        String consumption = lea.next().toLowerCase();
+        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
+                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
+                listTypeConsumption,
+                listTypeConsumption[0]);
 
         System.out.println("Ingrese el tipo de procedencia de la nevera? 1.Nacional 2.Importado");
         int origin = lea.nextInt();
@@ -75,20 +85,22 @@ public class Main {
         System.out.println("Ingrese la capacidad de la nevera en litros : ");
         int capacity = lea.nextInt();
 
-        Fridge fridge = new Fridge(consumption.charAt(0), origin, capacity);
+        Fridge fridge = new Fridge(typeConsumption, origin, capacity);
         addProduct(fridge);
 
         System.out.println(fridge.getPriceTotal());
     }
 
     public static void registerHomeAppliance(){
-        System.out.println("Tipo de consumo del electrodomestico? A,B,C" );
-        String consumption = lea.next().toLowerCase();
+        Consumption typeConsumption = (Consumption)JOptionPane.showInputDialog(null, "TIPO DE CONSUMO",
+                "Dias de la semana", JOptionPane.QUESTION_MESSAGE, null, // Use
+                listTypeConsumption,
+                listTypeConsumption[0]);
 
         System.out.println("Ingrese el tipo de procedencia del electrodomestico? 1.Nacional 2.Importado");
         int origin = lea.nextInt();
 
-        HomeAppliances homeAppliances = new HomeAppliances(consumption.charAt(0),origin);
+        HomeAppliances homeAppliances = new HomeAppliances(typeConsumption,origin);
         addProduct(homeAppliances);
 
         System.out.println(homeAppliances.getPriceTotal());
