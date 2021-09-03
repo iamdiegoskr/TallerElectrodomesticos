@@ -51,10 +51,10 @@ public class Tv extends HomeAppliances{
 
     @Override
     public String toString() {
-        return "Televisor -> " + " \n" +
-                 "Precio"+ getPriceTotal() + " \n" +
-                "Consumo = " + super.getConsumption()  + " \n" +
-                "Importado = " + super.getOrigin() + " \n" +
-                "Tdt ? " + isTdt();
+        return "TELEVISOR -> " + " \n" +
+                 "Precio : "+ getPriceTotal() + " \n" +
+                 "Tipo de consumo : " + super.getConsumption()  + " \n" +
+                 "Tipo de origen : " + super.getOrigin() + " \n" +
+                 "Tdt ? " + isTdt();
     }
 }

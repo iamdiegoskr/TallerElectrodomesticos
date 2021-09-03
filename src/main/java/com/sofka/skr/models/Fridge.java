@@ -44,10 +44,10 @@ public class Fridge extends HomeAppliances {
 
     @Override
     public String toString() {
-        return "Nevera -> {" + " \n" +
+        return "NEVERA -> {" + " \n" +
                 "Precio : " + getPriceTotal() +
-                "Consumo " + super.getConsumption() + " \n" +
-                "Importado" + super.getOrigin() + " \n" +
-                "Capacidad =" + capacity;
+                "Tipo de consumo : " + super.getConsumption() + " \n" +
+                "Orgines : " + super.getOrigin() + " \n" +
+                "Capacidad :" + capacity;
     }
 }
